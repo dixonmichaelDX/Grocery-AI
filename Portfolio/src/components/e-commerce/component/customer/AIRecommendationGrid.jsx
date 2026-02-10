@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaMagic, FaShoppingCart, FaInfoCircle, FaStar } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { FaMagic, FaShoppingCart, FaStar } from 'react-icons/fa';
 
 // Placeholder data since API might not be fully populated with AI recommendations yet
 const MOCK_RECOMMENDATIONS = [
@@ -33,7 +32,6 @@ const MOCK_RECOMMENDATIONS = [
 const AIRecommendationGrid = ({ onAddToCart }) => {
     const [loading, setLoading] = useState(true);
     const [recommendations, setRecommendations] = useState([]);
-    const navigate = useNavigate();
 
     useEffect(() => {
         // Simulate AI processing delay

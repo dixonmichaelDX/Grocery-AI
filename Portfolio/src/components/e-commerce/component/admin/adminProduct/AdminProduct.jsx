@@ -55,14 +55,14 @@ const AdminProduct = () => {
       .catch((err) => console.log("Fetch my-products error", err));
   }, [token]);
 
-  const fetchCategories = () => {
+  const fetchCategories = useCallback(() => {
     axios
       .get("https://grocery-ai.onrender.com/api/category")
       .then((res) => setGetCategoryDetails(res.data))
       .catch((err) => console.log("Fetch category error", err));
-  };
+  }, []);
 
-  const fetchSubCategories = (categoryId) => {
+  const fetchSubCategories = useCallback((categoryId) => {
     axios
       .get(
         `https://grocery-ai.onrender.com/api/subcategories/category/${categoryId}`,
@@ -72,7 +72,7 @@ const AdminProduct = () => {
         console.error("Failed to fetch subcategories", err);
         setGetSubCategoryDetails([]);
       });
-  };
+  }, []);
 
   // ------------------------------
   // Effects
@@ -80,12 +80,12 @@ const AdminProduct = () => {
   useEffect(() => {
     fetchProducts();
     fetchCategories();
-  }, [fetchProducts]);
+  }, [fetchProducts, fetchCategories]);
 
   useEffect(() => {
     if (productCategory) fetchSubCategories(productCategory);
     else setGetSubCategoryDetails([]);
-  }, [productCategory]);
+  }, [productCategory, fetchSubCategories]);
 
   // ------------------------------
   // Auth / Logout
@@ -266,7 +266,7 @@ const AdminProduct = () => {
                     } catch (e) {
                       alert(
                         "Failed to delete products: " +
-                          (e.response?.data?.message || e.message),
+                        (e.response?.data?.message || e.message),
                       );
                     }
                   }
@@ -395,7 +395,7 @@ const AdminProduct = () => {
                       .toLowerCase()
                       .includes(searchTerm.toLowerCase());
                     const matchesCategory = filterCategory
-                      ? product.category_id == filterCategory
+                      ? String(product.category_id) === String(filterCategory)
                       : true;
                     // Stock Filter
                     let matchesStock = true;

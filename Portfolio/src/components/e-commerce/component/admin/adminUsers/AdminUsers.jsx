@@ -5,9 +5,7 @@ import {
   Home,
   LogOut,
   User,
-  Mail,
   Shield,
-  Calendar,
   AlertCircle,
   Users,
 } from "lucide-react";
