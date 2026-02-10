@@ -26,7 +26,7 @@ const DemandPrediction = () => {
     if (selectedProduct && activeTab === "forecast") {
       fetchPrediction(selectedProduct);
     }
-  }, []);
+  });
 
   const fetchProducts = async () => {
     try {

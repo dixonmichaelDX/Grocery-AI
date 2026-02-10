@@ -2,8 +2,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
-  useLocation,
+  Navigate
 } from "react-router-dom";
 
 import Home from "./components/e-commerce/component/home/Home";
