@@ -24,7 +24,7 @@ import AdminUsers from "./component/admin/adminUsers/AdminUsers";
 function Ecom() {
   const navigate = useNavigate();
   const [ViewMoreDetails, setViewMoreDetails] = useState(null);
-  const [chkTok, setChkTok] = useState(null)
+  const [, setChkTok] = useState(null)
   // Session expiry
   useEffect(() => {
     const token = localStorage.getItem("token");

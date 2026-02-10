@@ -7,9 +7,7 @@ import {
     CartesianGrid,
     Tooltip,
     Legend,
-    ResponsiveContainer,
-    Area,
-    AreaChart
+    ResponsiveContainer
 } from 'recharts';
 
 const DemandChart = ({ data, title }) => {

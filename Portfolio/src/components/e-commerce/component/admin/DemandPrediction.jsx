@@ -26,7 +26,7 @@ const DemandPrediction = () => {
     if (selectedProduct && activeTab === "forecast") {
       fetchPrediction(selectedProduct);
     }
-  }, [selectedProduct, activeTab]);
+  }, []);
 
   const fetchProducts = async () => {
     try {
@@ -150,11 +150,10 @@ const DemandPrediction = () => {
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
-                activeTab === tab
-                  ? "bg-white text-indigo-600 shadow-sm"
-                  : "text-gray-500 hover:text-gray-700"
-              }`}
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${activeTab === tab
+                ? "bg-white text-indigo-600 shadow-sm"
+                : "text-gray-500 hover:text-gray-700"
+                }`}
             >
               {tab.charAt(0).toUpperCase() + tab.slice(1)}
             </button>
@@ -270,7 +269,7 @@ const DemandPrediction = () => {
                   } catch (e) {
                     alert(
                       "Seeding failed: " +
-                        (e.response?.data?.message || e.message),
+                      (e.response?.data?.message || e.message),
                     );
                   } finally {
                     setLoading(false);
@@ -338,23 +337,21 @@ const DemandPrediction = () => {
           ].map((alert) => (
             <div
               key={alert.id}
-              className={`p-4 rounded-xl border-l-4 shadow-sm bg-white flex justify-between items-center ${
-                alert.type === "critical"
-                  ? "border-red-500"
-                  : alert.type === "warning"
-                    ? "border-yellow-500"
-                    : "border-blue-500"
-              }`}
+              className={`p-4 rounded-xl border-l-4 shadow-sm bg-white flex justify-between items-center ${alert.type === "critical"
+                ? "border-red-500"
+                : alert.type === "warning"
+                  ? "border-yellow-500"
+                  : "border-blue-500"
+                }`}
             >
               <div>
                 <h4
-                  className={`font-bold text-sm ${
-                    alert.type === "critical"
-                      ? "text-red-600"
-                      : alert.type === "warning"
-                        ? "text-yellow-600"
-                        : "text-blue-600"
-                  } uppercase tracking-wider mb-1`}
+                  className={`font-bold text-sm ${alert.type === "critical"
+                    ? "text-red-600"
+                    : alert.type === "warning"
+                      ? "text-yellow-600"
+                      : "text-blue-600"
+                    } uppercase tracking-wider mb-1`}
                 >
                   {alert.type} Alert
                 </h4>

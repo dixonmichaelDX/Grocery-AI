@@ -35,7 +35,6 @@ import "./App.css";
 function AppContent() {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
-  const location = useLocation();
 
   // Progress loader
   useEffect(() => {
